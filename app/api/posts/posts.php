@@ -3,6 +3,6 @@
     use \Psr\Http\Message\ResponseInterface as Response;
 
     require_once('create.php');
-
     require_once('read.php');
+    require_once('update.php');
 ?>
