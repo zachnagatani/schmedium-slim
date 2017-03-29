@@ -6,9 +6,16 @@
         try {
             // Connect to the database
             $db = Db::connect();
-            // Make a query to the db for all posts
-            $stmt = $db->query("SELECT * FROM posts");
+            // SQL for prepared statement
+            $prepared_sql = "SELECT * FROM posts";
+            $stmt = $db->prepare($prepared_sql);
+
+            // Execute the statement
+            $stmt->execute();
+
+            // Grab the posts
             $posts = $stmt->fetchAll(PDO::FETCH_OBJ);
+
             // Close the db connection
             $db = null;
 
@@ -22,19 +29,30 @@
 
     $app->get('/api/posts/{id}', function(Request $request, Response $response) {
         try {
-            // Grab the id parameter
-            $id = $request->getAttribute("id");
             // Connect to the db and query for single post
             $db = Db::connect();
-            $stmt = $db->query("SELECT *
-                                FROM posts
-                                WHERE id = $id");
-            $posts = $stmt->fetch(PDO::FETCH_OBJ);
+
+            // Prepare
+            $prepared_sql = "SELECT *
+                             FROM posts
+                             WHERE id = :id";
+            $stmt = $db->prepare($prepared_sql);
+
+            // Bind
+            $stmt->bindParam('id', $id);
+            $id = $request->getAttribute('id');
+
+            // Execute
+            $stmt->execute();
+
+            // Grab the post
+            $post = $stmt->fetch(PDO::FETCH_OBJ);
+
             // Close the db connection
             $db = null;
 
             // Respond with the post
-            return $response->withJson($posts);
+            return $response->withJson($post);
         } catch (PDOException $e) {
             $err = array("error" => $e->getMessage());
             return $response->withJson($err);
