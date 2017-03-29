@@ -2,7 +2,7 @@
     use \Psr\Http\Message\ServerRequestInterface as Request;
     use \Psr\Http\Message\ResponseInterface as Response;
 
-    $app->post('/api/posts/add', function(Request $request, Response $response) {
+    $app->post('/api/posts/create', function(Request $request, Response $response) {
         try {
             // Connect to the database
             $db = Db::connect();
@@ -26,6 +26,9 @@
 
             // Execute the query
             $stmt->execute();
+
+            // Close the db
+            $db = null;
 
             $data = array("text" => "Post Added");
             return $response->withJson($data);

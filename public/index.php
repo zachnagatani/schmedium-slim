@@ -16,7 +16,7 @@
         return $response;
     });
 
-    require_once('../app/api/posts.php');
+    require_once('../app/api/posts/posts.php');
 
     $app->run();
 ?>
