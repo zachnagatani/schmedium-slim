@@ -2,8 +2,8 @@
     use \Psr\Http\Message\ServerRequestInterface as Request;
     use \Psr\Http\Message\ResponseInterface as Response;
 
-    $app->post('/api/auth/signup', function(Request $request, Response $response) {
-        try {
+    class Signup {
+        public static function checkConflict($username, $email) {
             // Connect to db
             $db = Db::connect();
 
@@ -19,34 +19,53 @@
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':email', $email);
 
-            $username = $request->getParam('username');
-            $email = $request->getParam('email');
+            // Execute
+            $stmt->execute();
+
+            // Close the db connection
+            $db = null;
+
+            return $stmt->rowCount();
+        }
+
+        public static function register($username, $email, $UNSAFEpassword) {
+            $db = Db::connect();
+
+            // Prepare
+            $prepared_sql = "INSERT INTO users (username, email, password)
+                            VALUES (:username, :email, :password)";
+            $stmt = $db->prepare($prepared_sql);
+
+            // Bind
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+
+            // HASH THE PASSWORD!!
+            $password = password_hash($UNSAFEpassword, PASSWORD_DEFAULT);
 
             // Execute
             $stmt->execute();
 
-            if ($stmt->rowCount() === 0) {
-                // Prepare
-                $prepared_sql = "INSERT INTO users (username, email, password)
-                                VALUES (:username, :email, :password)";
-                $stmt = $db->prepare($prepared_sql);
+            // Close the db connection
+            $db = null;
+        }
+    }
 
-                // Bind
-                $stmt->bindParam(':username', $username);
-                $stmt->bindParam(':email', $email);
-                $stmt->bindParam(':password', $password);
-
-                $UNSAFEpassword = $request->getParam('password');
-                // HASH THE PASSWORD!!
-                $password = password_hash($UNSAFEpassword, PASSWORD_DEFAULT);
-
-                // Execute
-                $stmt->execute();
-
+    $app->post('/api/auth/signup', function(Request $request, Response $response) {
+        $username = $request->getParam('username');
+        $email = $request->getParam('email');
+        $UNSAFEpassword = $request->getParam('UNSAFEpassword');
+        try {
+            // Check for conflicts
+            if (Signup::checkConflict($username, $email) === 0) {
+                // Register the user
+                Signup::register($username, $email, $UNSAFEpassword);
                 // Return a confirmation message
                 $data = array("text" => "Account created!");
                 return $response->withJson($data);
             } else {
+                // Let the user know something exists already
                 $err = array("error" => "User with that username or email already exists.");
                 return $response->withJson($err);
             }
