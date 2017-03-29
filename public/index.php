@@ -15,5 +15,8 @@
 
         return $response;
     });
+
+    require_once('../app/api/posts.php');
+
     $app->run();
 ?>
