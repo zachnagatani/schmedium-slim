@@ -2,6 +2,7 @@
     use \Psr\Http\Message\ServerRequestInterface as Request;
     use \Psr\Http\Message\ResponseInterface as Response;
 
+    // Class with helper functions for sign up route
     class Signup {
         public static function checkConflict($username, $email) {
             // Connect to db
@@ -55,7 +56,7 @@
     $app->post('/api/auth/signup', function(Request $request, Response $response) {
         $username = $request->getParam('username');
         $email = $request->getParam('email');
-        $UNSAFEpassword = $request->getParam('UNSAFEpassword');
+        $UNSAFEpassword = $request->getParam('password');
         try {
             // Check for conflicts
             if (Signup::checkConflict($username, $email) === 0) {
