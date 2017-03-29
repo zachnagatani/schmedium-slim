@@ -15,4 +15,21 @@
             return $response->withJson($err);
         }
     });
+
+    $app->get('/api/posts/{id}', function(Request $request, Response $response) {
+        try {
+            $id = $request->getAttribute("id");
+            $db = Db::connect();
+            $stmt = $db->query("SELECT *
+                                FROM posts
+                                WHERE id = $id");
+            $posts = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $db = null;
+
+            return $response->withJson($posts);
+        } catch (PDOException $e) {
+            $err = array("error" => $e->getMessage());
+            return $response->withJson($err);
+        }
+    });
 ?>
