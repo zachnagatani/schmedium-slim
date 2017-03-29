@@ -7,16 +7,9 @@
     require '../vendor/autoload.php';
 
     $app = new \Slim\App;
-    $app->get('/hello/{name}', function (Request $request, Response $response) {
-        $db = new Db();
-        $db->connect();
-        $name = $request->getAttribute('name');
-        $response->getBody()->write("Hello, $name");
 
-        return $response;
-    });
-
-    require_once('../app/api/posts/posts.php');
+    // require_once('../app/api/posts/posts.php');
+    require_once('../app/api/auth/auth.php');
 
     $app->run();
 ?>

@@ -9,7 +9,7 @@
 
             // Query for prepared statement
             $prepared_sql = "INSERT INTO posts (title, image_url, content, author)
-                            VALUES (:title, :image_url, :content, :author)";
+                             VALUES (:title, :image_url, :content, :author)";
             // Prepare the query
             $stmt = $db->prepare($prepared_sql);
             // Bind the query parameters
