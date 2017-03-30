@@ -5,8 +5,17 @@
                 <section class="posts-section">
                     <div class="row">
                         <div class="col-sm-8">
-                            <article class="blog-post blog-post--large">
-                                <h2>Why cats are the best!</h2>
+                            <article class="blog-post blog-post--large"
+                                     style="background: url('https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg') no-repeat center center;
+                                     background-size: cover;">
+                                <div class="blog-post--large__content">
+                                        <h2 class="blog-post--large__heading">Why cats are the best!</h2>
+                                        <p class="blog-post__tagline blog-post--large__tagline">5 indisuptable reasons felines reign supreme.</p>
+                                </div>
+                                <footer class="blog-post__footer blog-post--large__footer">
+                                    <a href="#" class="blog-post__author blog-post--large__author">zachnagatani</a>
+                                    <small class="blog-post__timestamp blog-post--large__timestamp">Mar 30</small>
+                                </footer>
                             </article>
 
                             <article class="blog-post blog-post--medium">
@@ -18,8 +27,8 @@
                                     <h2 class="blog-post__heading">For real, cats are the best</h2>
                                     <p class="blog-post__tagline">No doubt, my friend.</p>
                                     <footer class="blog-post__footer">
-                                    <a href="#" class="blog-post__author">zachnagatani</a>
-                                    <small class="blog-post__timestamp">Mar 30</small>
+                                        <a href="#" class="blog-post__author">zachnagatani</a>
+                                        <small class="blog-post__timestamp">Mar 30</small>
                                     </footer>
                                 </div>
                             </article>
