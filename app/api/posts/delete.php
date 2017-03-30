@@ -10,7 +10,6 @@
             list($jwt) = sscanf($authorization, 'Bearer %s');
             $dummySecret = "imachangethis";
             $token = JWT::decode($jwt, $dummySecret, array('HS512'));
-            // return $response->withJson($token->data->username);
 
             // Connect to the db
             $db = Db::connect();
