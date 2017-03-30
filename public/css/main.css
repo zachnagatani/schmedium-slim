@@ -1,0 +1,36 @@
+/* Colors
+    Medium Dark: #2A2C2B
+    Medium White: #FCFCFC
+    Green: #00B96B
+    Light Gray: #F5F5F5
+    Gray: #DEDEDE
+*/
+
+/* Global */
+body {
+    font-family: "freight-sans-pro", sans-serif;
+    color: #2A2C2B;
+    font-size: 16px;
+}
+
+p {
+    font-family: "ff-tisa-web-pro", serif;
+}
+
+/* Navbar */
+.container--nav {
+    border-bottom: 1px solid #F3F3F3;
+}
+
+.nav-link--story {
+    color: #DEDEDE;
+}
+
+.nav-link--signin-signup {
+    color: #00B96B;
+}
+
+.navbar-brand {
+    color: #2A2C2B;
+    font-weight: bold;
+}
