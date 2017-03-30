@@ -3,7 +3,7 @@
     Medium White: #FCFCFC
     Green: #00B96B
     Light Gray: #F5F5F5
-    Gray: #DEDEDE
+    Gray: rgba(0, 0, 0, 0.44)
 */
 
 /* Global */
@@ -17,13 +17,17 @@ p {
     font-family: "ff-tisa-web-pro", serif;
 }
 
+main {
+    padding: 50px;
+}
+
 /* Navbar */
 .container--nav {
     border-bottom: 1px solid #F3F3F3;
 }
 
 .nav-link--story {
-    color: #DEDEDE;
+    color: rgba(0, 0, 0, 0.44);
 }
 
 .nav-link--signin-signup {
@@ -33,4 +37,69 @@ p {
 .navbar-brand {
     color: #2A2C2B;
     font-weight: bold;
+}
+
+/* Home Styles */
+.blog-post {
+    /*border: 1px solid #333;*/
+    box-shadow: 0 4px 16px -2px rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.02);
+}
+
+.blog-post__heading {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.blog-post__tagline {
+    font-family: "freight-sans-pro", serif;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.44);
+}
+
+.blog-post__author {
+    color: #2A2C2B;
+}
+
+.blog-post__timestamp {
+    display: block;
+    color: rgba(0, 0, 0, 0.44);
+}
+
+.blog-post--large {
+    height: 460px;
+    margin-bottom: 20px;
+}
+
+.blog-post--large, .blog-post--medium {
+    position: relative;
+    bottom: 20px;
+}
+
+.blog-post--medium, .blog-post--small {
+    height: 220px;
+    padding: 20px;
+    position: relative;
+}
+
+.blog-post--medium {
+    padding: 0;
+    display: flex;
+}
+
+.blog-post--medium__img {
+    width: 240px;
+}
+
+.blog-post--medium__content {
+    padding: 20px;
+}
+
+.blog-post--small {
+    margin-bottom: 20px;
+}
+
+.blog-post__footer {
+    position: absolute;
+    bottom: 20px;
 }
