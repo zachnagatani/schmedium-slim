@@ -1,15 +1,22 @@
 <?php
     use \Psr\Http\Message\ServerRequestInterface as Request;
     use \Psr\Http\Message\ResponseInterface as Response;
+    use \Firebase\JWT\JWT;
 
     $app->post('/api/posts/create', function(Request $request, Response $response) {
         try {
+            // TODO: Abstract into class somewhere for reuse in other routes
+            $authorization = $request->getHeader('authorization')[0];
+            list($jwt) = sscanf($authorization, 'Bearer %s');
+            $dummySecret = "imachangethis";
+            $token = JWT::decode($jwt, $dummySecret, array('HS512'));
+
             // Connect to the database
             $db = Db::connect();
 
             // Query for prepared statement
             $prepared_sql = "INSERT INTO posts (title, image_url, content, author)
-                             VALUES (:title, :image_url, :content, :author)";
+                            VALUES (:title, :image_url, :content, :author)";
             // Prepare the query
             $stmt = $db->prepare($prepared_sql);
             // Bind the query parameters

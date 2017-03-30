@@ -66,7 +66,7 @@
                 // Register the user
                 Signup::register($username, $email, $UNSAFEpassword);
                 // Return a confirmation message
-                $data = array("jwt" => Token::jwt($username));
+                $data = array("jwt" => Token::generate($username));
                 return $response->withJson($data);
             } else {
                 // Let the user know something exists already

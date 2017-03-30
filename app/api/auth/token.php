@@ -2,7 +2,7 @@
     use \Firebase\JWT\JWT;
 
     class Token {
-        public static function jwt($username) {
+        public static function generate($username) {
             $dummySecret = "imachangethis";
             $tokenID = base64_encode(mcrypt_create_iv(32));
             $issuedAt = time();
@@ -25,6 +25,13 @@
             );
 
             return $jwt;
+        }
+
+        public static function preAuth($request) {
+            $authorization = $request->getHeader('authorization')[0];
+            list($jwt) = sscanf($authorization, 'Bearer %s');
+            $dummySecret = "imachangethis";
+            $token = JWT::decode($jwt, $dummySecret, array('HS512'));
         }
     }
 ?>

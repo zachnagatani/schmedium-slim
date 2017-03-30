@@ -39,7 +39,7 @@
 
         try {
             if (Login::checkPassword($username, $password)) {
-                $data = array("jwt" => Token::jwt($username));
+                $data = array("jwt" => Token::generate($username));
                 return $response->withJson($data);
             } else {
                 $err = array("error" => "Invalid login credentials.");
