@@ -7,7 +7,9 @@
             // Connect to the database
             $db = Db::connect();
             // SQL for prepared statement
-            $prepared_sql = "SELECT * FROM posts";
+            $prepared_sql = "SELECT *
+                             FROM posts
+                             ORDER BY updated_at DESC";
             $stmt = $db->prepare($prepared_sql);
 
             // Execute the statement
