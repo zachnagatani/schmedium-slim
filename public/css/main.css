@@ -129,3 +129,22 @@ main {
 .blog-post--small {
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 768px) {
+    .blog-post--large {
+        height: 250px;
+        padding: 20px;
+    }
+
+    .blog-post--large__content {
+        top: 93px;
+    }
+
+    .blog-post--large__footer {
+        bottom: 20px;
+    }
+
+    .blog-post--medium, .blog-post--small {
+        height: 152px;
+    }
+}
