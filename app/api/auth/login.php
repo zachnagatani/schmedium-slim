@@ -2,7 +2,7 @@
     use \Psr\Http\Message\ServerRequestInterface as Request;
     use \Psr\Http\Message\ResponseInterface as Response;
 
-    // Class with helper functions for sign up route
+    // Class with helper functions for login route
     class Login {
         public static function checkPassword($username, $password) {
             // Connect to db

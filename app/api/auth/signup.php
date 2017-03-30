@@ -1,6 +1,7 @@
 <?php
     use \Psr\Http\Message\ServerRequestInterface as Request;
     use \Psr\Http\Message\ResponseInterface as Response;
+    use \Firebase\JWT\JWT;
 
     // Class with helper functions for sign up route
     class Signup {
@@ -51,6 +52,31 @@
             // Close the db connection
             $db = null;
         }
+
+        public static function jwt($username) {
+            $dummySecret = "imachangethis";
+            $tokenID = base64_encode(mcrypt_create_iv(32));
+            $issuedAt = time();
+            $notBefore = $issuedAt + 10;
+            $expires = $notBefore + (60 * 60);
+            $data = array(
+                "jti" => $tokenID,
+                "iat" => $issuedAt,
+                "nbf" => $notBefore,
+                "exp" => $expires,
+                "data" => array(
+                    "username" => $username
+                )
+            );
+
+            $jwt = JWT::encode(
+                $data,
+                $dummySecret,
+                'HS512'
+            );
+
+            return $jwt;
+        }
     }
 
     $app->post('/api/auth/signup', function(Request $request, Response $response) {
@@ -63,7 +89,7 @@
                 // Register the user
                 Signup::register($username, $email, $UNSAFEpassword);
                 // Return a confirmation message
-                $data = array("text" => "Account created!");
+                $data = array("jwt" => Signup::jwt($username));
                 return $response->withJson($data);
             } else {
                 // Let the user know something exists already
