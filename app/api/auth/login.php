@@ -2,6 +2,10 @@
     use \Psr\Http\Message\ServerRequestInterface as Request;
     use \Psr\Http\Message\ResponseInterface as Response;
 
+    // Access to Token class for jwt generation
+    require_once('token.php');
+
+
     // Class with helper functions for login route
     class Login {
         public static function checkPassword($username, $password) {
@@ -35,7 +39,7 @@
 
         try {
             if (Login::checkPassword($username, $password)) {
-                $data = array("text" => "Logged in!");
+                $data = array("jwt" => Token::jwt($username));
                 return $response->withJson($data);
             } else {
                 $err = array("error" => "Invalid login credentials.");
