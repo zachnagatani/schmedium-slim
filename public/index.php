@@ -1,15 +1,20 @@
 <?php
-    require_once('../app/db.php');
-
-    use \Psr\Http\Message\ServerRequestInterface as Request;
-    use \Psr\Http\Message\ResponseInterface as Response;
-
+    // Load dependencies from vendor
     require '../vendor/autoload.php';
-
+    // Create new slim app
     $app = new \Slim\App;
 
+    // Create new DIC for views
+    $container = $app->getContainer();
+    $container['view'] = new \Slim\Views\PhpRenderer("../templates/");
+
+    // DB connection
+    require_once('../app/db.php');
+    // API hooks
     require_once('../app/api/posts/posts.php');
     require_once('../app/api/auth/auth.php');
+    // Route hooks
+    require_once('../app/routes/index.php');
 
     $app->run();
 ?>
