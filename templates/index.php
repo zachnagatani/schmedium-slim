@@ -9,7 +9,7 @@
                                      style="background: url('https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg') no-repeat center center;
                                      background-size: cover;">
                                 <div class="blog-post--large__content">
-                                        <h2 class="blog-post--large__heading">Why cats are the best!</h2>
+                                        <h2 class="blog-post--large__heading"><?php echo $posts[0]->title;?></h2>
                                         <p class="blog-post__tagline blog-post--large__tagline">5 indisuptable reasons felines reign supreme.</p>
                                 </div>
                                 <footer class="blog-post__footer blog-post--large__footer">

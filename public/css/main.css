@@ -19,9 +19,15 @@ p {
 
 main {
     padding: 50px;
+    background: #FCFCFC;
 }
 
 /* Navbar */
+.navbar {
+    margin-bottom: 0;
+    background: #FCFCFC;
+}
+
 .container--nav {
     border-bottom: 1px solid #F3F3F3;
 }
@@ -37,6 +43,10 @@ main {
 .navbar-brand {
     color: #2A2C2B;
     font-weight: bold;
+}
+
+.icon-bar {
+    background: #2A2C2B;;
 }
 
 /* Home Styles */
