@@ -16,9 +16,10 @@
             return $response->withJson($err);
         } else {
             $decoded = json_decode($curl_response);
+            $posts = array_chunk($decoded, 5);
         }
 
-        $response = $this->view->render($response, "index.php", ["posts" => $decoded]);
+        $response = $this->view->render($response, "index.php", ["posts" => $posts]);
         return $response;
     });
 ?>

@@ -15,21 +15,23 @@
             $db = Db::connect();
 
             // Query for prepared statement
-            $prepared_sql = "INSERT INTO posts (title, image_url, content, author)
-                            VALUES (:title, :image_url, :content, :author)";
+            $prepared_sql = "INSERT INTO posts (title, tagline, image_url, content, author)
+                            VALUES (:title, :tagline, :image_url, :content, :author)";
             // Prepare the query
             $stmt = $db->prepare($prepared_sql);
             // Bind the query parameters
             $stmt->bindParam(':title', $title);
+            $stmt->bindParam(':tagline', $tagline);
             $stmt->bindParam(':image_url', $image_url);
             $stmt->bindParam(':content', $content);
             $stmt->bindParam(':author', $author);
 
             // Set the values of the paramaters from the request object
             $title = $request->getParam('title');
+            $tagline = $request->getParam('tagline');
             $image_url = $request->getParam('image_url');
             $content = $request->getParam('content');
-            $author = $request->getParam('author');
+            $author = $token->data->username;
 
             // Execute the query
             $stmt->execute();
