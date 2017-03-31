@@ -103,6 +103,8 @@ $(function() {
             return res.json();
         }).then(function(json) {
             console.log(json);
+            alert('Post added!');
+            window.location.href = "/";
         });
     }
 
