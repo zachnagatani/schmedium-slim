@@ -15,6 +15,7 @@
     require_once('../app/api/auth/auth.php');
     // Route hooks
     require_once('../app/routes/index.php');
+    require_once('../app/routes/post.php');
 
     $app->run();
 ?>
