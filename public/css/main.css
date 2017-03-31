@@ -209,6 +209,7 @@ input[type="color"] {
     border-bottom: 1px solid #ccc;
     border-radius: 0;
     box-shadow: none;
+    font-size: 18px;
 }
 
 textarea:focus,
@@ -228,7 +229,6 @@ input[type="tel"]:focus,
 input[type="color"]:focus {
     box-shadow: none;
     border-bottom: 1px solid #00B96B;
-    font-size: 18px;
 }
 
 label {
@@ -249,14 +249,14 @@ label {
 }
 
 /* Post Styles */
-.post-header {
+.post-header, .create-post-header {
     height: 125px;
     display: flex;
     align-items: center;
     background: #FCFCFC;
 }
 
-.post-header__container {
+.post-header__container, .create-post-header__container {
     width: 740px;
 }
 
@@ -271,4 +271,40 @@ label {
 
 .post__content {
     font-size: 21px;
+}
+
+/* Create Post Styles */
+input[type="text"].new-post__title {
+    font-size: 40px;
+    font-weight: bold;
+    background: #FCFCFC;
+}
+
+textarea.new-post__content {
+    font-family: "ff-tisa-web-pro", serif;
+    font-size: 21px;
+    background: #FCFCFC;
+    border: none;
+    box-shadow: none;
+}
+
+textarea.new-post__content:focus {
+    box-shadow: none;
+}
+
+.btn-publish {
+    color: #00B96B;
+    font-weight: bold;
+    background: #FCFCFC;
+    border: 1px solid #00B96B;
+    border-bottom-left-radius: 13986px;
+    border-top-left-radius: 13986px;
+    border-bottom-right-radius: 13986px;
+    border-top-right-radius: 13986px;
+    width: 78px;
+}
+
+.btn-publish:hover {
+    color: #00B96B;
+    background: #F3F3F3;
 }

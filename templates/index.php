@@ -1,5 +1,6 @@
 <?php require_once('includes/header.php'); ?>
 
+
         <main>
             <div class="container">
                 <!-- $posts is a multi-dimensional array. Loop through each array

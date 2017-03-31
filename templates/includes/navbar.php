@@ -12,7 +12,7 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" class="nav-link--story">Write a Story</a></li>
+                <li><a href="/create" class="nav-link--story">Write a Story</a></li>
                 <li><a href="#" class="nav-link--signin-signup" data-toggle="modal" data-target="#signin-modal">Sign in</a></li>
                 <li><a href="#" class="nav-link--signin-signup" data-toggle="modal" data-target="#signup-modal">Sign up</a></li>
             </ul>

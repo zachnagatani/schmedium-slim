@@ -1,4 +1,5 @@
 <?php require_once('includes/header.php'); ?>
+
         <header class="post-header">
             <div class="container post-header__container">
                 <a href="#" class="blog-post__author"><?php echo $post->author;?></a>

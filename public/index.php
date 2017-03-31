@@ -16,6 +16,7 @@
     // Route hooks
     require_once('../app/routes/index.php');
     require_once('../app/routes/post.php');
+    require_once('../app/routes/create.php');
 
     $app->run();
 ?>
