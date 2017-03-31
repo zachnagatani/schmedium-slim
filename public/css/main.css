@@ -274,16 +274,31 @@ label {
 }
 
 /* Create Post Styles */
+.create-post-header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 input[type="text"].new-post__title {
     font-size: 40px;
     font-weight: bold;
+}
+
+input[type="text"].new-post__title,
+input[type="text"].new-post__tagline,
+input[type="url"].new-post__image-url,
+textarea.new-post__content {
     background: #FCFCFC;
+}
+
+input[type="text"].new-post__image-url {
+    padding: 12px;
 }
 
 textarea.new-post__content {
     font-family: "ff-tisa-web-pro", serif;
     font-size: 21px;
-    background: #FCFCFC;
     border: none;
     box-shadow: none;
 }

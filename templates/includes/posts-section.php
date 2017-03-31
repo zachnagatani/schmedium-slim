@@ -11,7 +11,7 @@
                             of each one before rendering the markup -->
                             <?php if(isset($post_group[0])): ?>
                             <article class="blog-post blog-post--large"
-                                     style="background: url('https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg') no-repeat center center;
+                                     style="background: url('<?php echo $post_group[0]->image_url; ?>') no-repeat center center;
                                      background-size: cover;">
                                 <div class="blog-post--large__content">
                                         <a href="/post/<?php echo $post_group[0]->id;?>" class="blog-post-heading__link"><h2 class="blog-post--large__heading"><?php echo $post_group[0]->title;?></h2></a>
@@ -27,7 +27,7 @@
                             <?php if(isset($post_group[1])): ?>
                             <article class="blog-post blog-post--medium">
                                 <div class="blog-post--medium__img"
-                                     style="background: url('https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg') no-repeat center center;
+                                     style="background: url('<?php echo $post_group[1]->image_url; ?>') no-repeat center center;
                                      background-size: cover;">
                                 </div>
                                 <div class="blog-post--medium__content">

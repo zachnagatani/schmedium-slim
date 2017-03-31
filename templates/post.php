@@ -7,7 +7,7 @@
             </div>
         </header>
         <section class="post__feature-image"
-                 style="background: url('https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg') no-repeat center center;
+                 style="background: url('<?php echo $post->image_url; ?>') no-repeat center center;
                  background-size: cover;"></section>
         <main class="main--post">
             <div class="container">
