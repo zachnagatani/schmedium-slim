@@ -22,6 +22,12 @@ main {
     background: #FCFCFC;
 }
 
+@media screen and (max-width: 768px) {
+    main {
+        padding: 0;
+    }
+}
+
 /* Navbar */
 .navbar {
     margin-bottom: 0;
@@ -164,7 +170,7 @@ main {
     }
 
     .blog-post--medium, .blog-post--small {
-        height: 152px;
+        height: 200px;
     }
 }
 

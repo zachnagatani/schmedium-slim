@@ -109,7 +109,16 @@ $(function() {
     }
 
     var publishBtn = document.getElementById('btn-publish');
-    publishBtn.addEventListener('click', function() {
-        createPost();
-    });
+    if (publishBtn) {
+        publishBtn.addEventListener('click', function() {
+            createPost();
+        });
+    }
+
+    // Interpret Markdown
+    var postContentDiv = $('.post__content')[0];
+    console.log(postContentDiv);
+    if (postContentDiv) {
+        postContentDiv.innerHTML = marked(postContentDiv.innerHTML);
+    }
 });

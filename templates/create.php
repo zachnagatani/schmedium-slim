@@ -17,13 +17,13 @@
 
                         <div class="form-group">
                             <label for="tagline" class="sr-only">Tagline</label>
-                            <input type="text" name="tagline" id="tagline" placeholder="Five reasons why cats rule." class=" new-post__tagline form-control" required>
+                            <input type="text" name="tagline" id="tagline" placeholder="Tagline" class=" new-post__tagline form-control" required>
                         </div>
 
                         <div class="form-group">
                             <label for="image-url" class="sr-only">Feature Image URL</label>
                             <input type="url" name="image-url" id="image-url"
-                                   placeholder="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg" class="new-post__image-url form-control input-lg" required>
+                                   placeholder="Image URL: i.e. https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg" class="new-post__image-url form-control input-lg" required>
                         </div>
 
                         <div class="form-group">
