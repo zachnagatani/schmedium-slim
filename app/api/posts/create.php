@@ -43,7 +43,6 @@
             return $response->withJson($data);
         } catch (PDOException $e) {
             $err = array("error" => $e->getMessage());
-
             return $response->withJson($err);
         }
     });

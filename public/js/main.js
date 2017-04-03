@@ -25,7 +25,7 @@ $(function() {
         }).then(function(res) {
             return res.json();
         }).then(function(token) {
-            console.log(token);
+            window.localStorage['jwt'] = token.jwt;
         });
 
         $('#signup-modal').modal('hide');
@@ -73,6 +73,11 @@ $(function() {
             content = document.getElementById('content').value,
             token = window.localStorage['jwt'];
             console.log(title, tagline, imageURL, content, token);
+
+        if (!token) {
+            alert('You must sign up or sign in before publishing your story!');
+            return;
+        }
         if(!title) {
             alert('Please enter a title');
             return;

@@ -1,8 +1,10 @@
 <?php
     // Load dependencies from vendor
     require '../vendor/autoload.php';
+
+    $container = new \Slim\Container;
     // Create new slim app
-    $app = new \Slim\App;
+    $app = new \Slim\App($container);
 
     // Create new DIC for views
     $container = $app->getContainer();
