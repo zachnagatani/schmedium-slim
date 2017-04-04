@@ -18,7 +18,7 @@
                                         <p class="blog-post__tagline blog-post--large__tagline"><?php echo $post_group[0]->tagline; ?></p>
                                 </div>
                                 <footer class="blog-post__footer blog-post--large__footer">
-                                    <a href="#" class="blog-post__author blog-post--large__author"><?php echo $post_group[0]->author;?></a>
+                                    <a href="/<?php echo $post_group[0]->author; ?>" class="blog-post__author blog-post--large__author"><?php echo $post_group[0]->author;?></a>
                                     <small class="blog-post__timestamp blog-post--large__timestamp"><?php echo date("M jS", strtotime($post_group[0]->updated_at));?></small>
                                 </footer>
                             </article>
@@ -36,7 +36,7 @@
                                     </a>
                                     <p class="blog-post__tagline"><?php echo $post_group[1]->tagline; ?></p>
                                     <footer class="blog-post__footer">
-                                        <a href="#" class="blog-post__author"><?php echo $post_group[1]->author;?></a>
+                                        <a href="/<?php echo $post_group[1]->author; ?>" class="blog-post__author"><?php echo $post_group[1]->author;?></a>
                                         <small class="blog-post__timestamp"><?php echo date("M jS", strtotime($post_group[1]->updated_at));?></small>
                                     </footer>
                                 </div>
@@ -52,7 +52,7 @@
                                 </a>
                                 <p class="blog-post__tagline"><?php echo $post_group[2]->tagline; ?></p>
                                 <footer class="blog-post__footer">
-                                    <a href="#" class="blog-post__author"><?php echo $post_group[2]->author;?></a>
+                                    <a href="<?php echo $post_group[2]->author; ?>" class="blog-post__author"><?php echo $post_group[2]->author;?></a>
                                     <small class="blog-post__timestamp"><?php echo date("M jS", strtotime($post_group[2]->updated_at));?></small>
                                 </footer>
                             </article>
@@ -65,7 +65,7 @@
                                 </a>
                                 <p class="blog-post__tagline"><?php echo $post_group[3]->tagline; ?></p>
                                 <footer class="blog-post__footer">
-                                    <a href="#" class="blog-post__author"><?php echo $post_group[3]->author;?></a>
+                                    <a href="<?php echo $post_group[3]->author; ?>" class="blog-post__author"><?php echo $post_group[3]->author;?></a>
                                     <small class="blog-post__timestamp"><?php echo date("M jS", strtotime($post_group[3]->updated_at));?></small>
                                 </footer>
                             </article>
@@ -78,7 +78,7 @@
                                 </a>
                                 <p class="blog-post__tagline"><?php echo $post_group[4]->tagline; ?></p>
                                 <footer class="blog-post__footer">
-                                    <a href="#" class="blog-post__author"><?php echo $post_group[4]->author;?></a>
+                                    <a href="<?php echo $post_group[4]->author; ?>" class="blog-post__author"><?php echo $post_group[4]->author;?></a>
                                     <small class="blog-post__timestamp"><?php echo date("M jS", strtotime($post_group[4]->updated_at));?></small>
                                 </footer>
                             </article>

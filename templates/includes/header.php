@@ -11,7 +11,7 @@
         <script src="https://use.typekit.net/srm2ony.js"></script>
         <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
