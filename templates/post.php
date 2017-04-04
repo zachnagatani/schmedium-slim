@@ -2,7 +2,7 @@
 
         <header class="post-header">
             <div class="container post-header__container">
-                <a href="#" class="blog-post__author"><?php echo $post->author;?></a>
+                <a href="/<?php echo $post->author; ?>" class="blog-post__author"><?php echo $post->author;?></a>
                 <small class="blog-post__timestamp"><?php echo date("M jS", strtotime($post->updated_at));?></small>
             </div>
         </header>
