@@ -60,4 +60,37 @@
             return $response->withJson($err);
         }
     });
+
+    // For all of a user's posts
+    $app->get('/api/posts/read/{author}', function(Request $request, Response $response) {
+        try {
+            // Connect to the db and query for single post
+            $db = Db::connect();
+
+            // Prepare
+            $prepared_sql = "SELECT *
+                             FROM posts
+                             WHERE author = :author";
+            $stmt = $db->prepare($prepared_sql);
+
+            // Bind
+            $stmt->bindParam('author', $author);
+            $author = $request->getAttribute('author');
+
+            // Execute
+            $stmt->execute();
+
+            // Grab the post
+            $posts = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+            // Close the db connection
+            $db = null;
+
+            // Respond with the post
+            return $response->withJson($posts);
+        } catch (PDOException $e) {
+            $err = array("error" => $e->getMessage());
+            return $response->withJson($err);
+        }
+    });
 ?>

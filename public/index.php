@@ -19,6 +19,7 @@
     require_once('../app/routes/index.php');
     require_once('../app/routes/post.php');
     require_once('../app/routes/create.php');
+    require_once('../app/routes/author.php');
 
     $app->run();
 ?>
