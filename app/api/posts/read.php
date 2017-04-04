@@ -70,7 +70,8 @@
             // Prepare
             $prepared_sql = "SELECT *
                              FROM posts
-                             WHERE author = :author";
+                             WHERE author = :author
+                             ORDER BY updated_at DESC";
             $stmt = $db->prepare($prepared_sql);
 
             // Bind
