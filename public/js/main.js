@@ -26,6 +26,7 @@ $(function() {
             return res.json();
         }).then(function(token) {
             window.localStorage['jwt'] = token.jwt;
+            toggleNav(window.localStorage['jwt']);
         });
 
         $('#signup-modal').modal('hide');
@@ -48,6 +49,7 @@ $(function() {
             return res.json();
         }).then(function(token) {
             window.localStorage['jwt'] = token.jwt;
+            toggleNav(window.localStorage['jwt']);
         });
 
         $('#signin-modal').modal('hide');
@@ -122,8 +124,40 @@ $(function() {
 
     // Interpret Markdown
     var postContentDiv = $('.post__content')[0];
-    console.log(postContentDiv);
     if (postContentDiv) {
         postContentDiv.innerHTML = marked(postContentDiv.innerHTML);
     }
+
+    function signOut() {
+        window.localStorage.removeItem('jwt');
+        toggleNav(window.localStorage['jwt']);
+    }
+
+    document.getElementById('nav-link--signout').addEventListener('click', function() {
+        signOut();
+    });
+
+    function toggleNav(jwt) {
+        var navbarSignedOut = $('#navbar--signedout'),
+            navbarSignedIn = $('#navbar--signedin'),
+            exp;
+        if (jwt) {
+            exp = JSON.parse(window.atob(jwt.split('.')[1])).exp;
+        } else {
+            navbarSignedIn.addClass('hidden');
+            navbarSignedOut.removeClass('hidden');
+            return;
+        }
+
+        // Multiply by 1000 because time is coming from php
+        if (new Date() < exp * 1000) {
+            navbarSignedOut.addClass('hidden');
+            navbarSignedIn.removeClass('hidden');
+        } else {
+            navbarSignedIn.addClass('hidden');
+            navbarSignedOut.removeClass('hidden');
+        }
+    }
+
+    toggleNav(window.localStorage['jwt']);
 });
