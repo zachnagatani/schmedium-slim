@@ -1,6 +1,7 @@
 <?php
     // Load dependencies from vendor
     require '../vendor/autoload.php';
+    require_once('../app/models/post.php');
 
     $container = new \Slim\Container;
     // Create new slim app
