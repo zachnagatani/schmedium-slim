@@ -32,7 +32,7 @@
     $app->get('/api/posts/{id}', function(Request $request, Response $response) {
         try {
             // Connect to the db and query for single post
-            $db = Db::connect();
+            // $db = Db::connect();
 
             // Prepare
             $prepared_sql = "SELECT *

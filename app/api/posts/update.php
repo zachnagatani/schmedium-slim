@@ -29,27 +29,11 @@
 
             $author = $stmt->fetch(PDO::FETCH_OBJ);
 
+            // If user is authorized, create a new post object and update the post
+            // Otherwise respond with error message
             if ($author->author === $token->data->username) {
-                // Connect to the db
-                $db = Db::connect();
-
-                // SQL for prepared statement
-                $prepared_sql = "UPDATE posts
-                                SET content = :content
-                                WHERE id = :id";
-
-                // Prepare the statement
-                $stmt = $db->prepare($prepared_sql);
-                // Bind the paramaters
-                $stmt->bindParam(':content', $content);
-                $stmt->bindParam(':id', $id);
-
-                // Provide values for bound params
-                $content = $request->getParam('content');
-                $id = $request->getAttribute('id');
-
-                // Excecute the statement
-                $stmt->execute();
+                $post = new Post(array("content" => $request->getParam('content')));
+                $post->update($db, $id);
 
                 // Close the db connection
                 $db = null;

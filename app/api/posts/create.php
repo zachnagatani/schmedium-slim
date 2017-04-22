@@ -16,11 +16,13 @@
 
             // Create new post object and save it to database
             $post = new Post(
-                $request->getParam('title'),
-                $request->getParam('tagline'),
-                $request->getParam('image_url'),
-                $request->getParam('content'),
-                $token->data->username
+                array(
+                    'title' => $request->getParam('title'),
+                    'tagline' => $request->getParam('tagline'),
+                    'image_url' => $request->getParam('image_url'),
+                    'content' => $request->getParam('content'),
+                    'author' => $token->data->username
+                )
             );
             $post->save($db);
 
