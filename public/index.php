@@ -3,6 +3,7 @@
     require '../vendor/autoload.php';
     require_once('../app/models/post.php');
     require_once('../app/services/authorization.php');
+    require_once('../app/services/authentication.php');
 
     $container = new \Slim\Container;
     // Create new slim app

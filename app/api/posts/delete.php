@@ -5,11 +5,9 @@
 
     $app->delete('/api/posts/delete/{id}', function(Request $request, Response $response) {
         try {
-            // TODO: Abstract into class somewhere for reuse in other routes
-            $authorization = $request->getHeader('authorization')[0];
-            list($jwt) = sscanf($authorization, 'Bearer %s');
-            $dummySecret = "imachangethis";
-            $token = JWT::decode($jwt, $dummySecret, array('HS512'));
+            // Calls jwtHandler on Authentication service
+            // Extracts jwt from header
+            $token = Authentication::jwtHandler($request->getHeader('authorization'));
 
             // Connect to the db
             $db = Db::connect();

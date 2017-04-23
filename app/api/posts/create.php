@@ -6,10 +6,7 @@
     $app->post('/api/posts/create', function(Request $request, Response $response) {
         try {
             // TODO: Abstract into class somewhere for reuse in other routes
-            $authorization = $request->getHeader('authorization')[0];
-            list($jwt) = sscanf($authorization, 'Bearer %s');
-            $dummySecret = "imachangethis";
-            $token = JWT::decode($jwt, $dummySecret, array('HS512'));
+            $token = Authentication::jwtHandler($request->getHeader('authorization'));
 
             // Connect to the database
             $db = Db::connect();
