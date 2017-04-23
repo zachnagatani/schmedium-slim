@@ -16,6 +16,7 @@
     // Services
     require_once('../app/services/authorization.php');
     require_once('../app/services/authentication.php');
+    require_once('../app/services/signup.php');
 
     // DB connection
     require_once('../app/db.php');
