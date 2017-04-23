@@ -29,17 +29,11 @@
 
             $author = $stmt->fetch(PDO::FETCH_OBJ);
 
+            // If user is authorized, create new post object and
+            // delete the object from the db
             if ($author->author === $token->data->username) {
-                // SQL for prepared statement to delete post
-                $prepared_sql = "DELETE FROM posts
-                                WHERE id = :id";
-                $stmt = $db->prepare($prepared_sql);
-
-                // Bind params
-                $stmt->bindParam(':id', $id);
-
-                // Provide values for bound params
-                $id = $request->getAttribute('id');
+                $post = new Post();
+                $post->delete($db, $id);
 
                 // Execute the statement
                 $stmt->execute();

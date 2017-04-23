@@ -30,50 +30,7 @@
 
         // Updates a post and returns true or false, depending
         // on if the author is authorized to update the post or not
-        // Takes in a JWT and the id of the post to be updated
-        // public function update($token, $id) {
-            // Connect to the db
-            // $db = Db::connect();
-
-            // Prepare
-            // $prepared_sql = "SELECT author
-                            //  FROM posts
-                            //  WHERE id = :id";
-            // $stmt = $db->prepare($prepared_sql);
-
-            // Bind
-            // $stmt->bindParam(":id", $id);
-
-            // Execute
-            // $stmt->execute();
-
-            // $author = $stmt->fetch(PDO::FETCH_OBJ);
-
-            // if ($author->author === $token->data->username) {
-                // SQL for prepared statement
-                // $prepared_sql = "UPDATE posts
-                                // SET content = :content
-                                // WHERE id = :id";
-
-                // Prepare the statement
-                // $stmt = $db->prepare($prepared_sql);
-                // Bind the paramaters
-                // $stmt->bindParam(':content', $this->content);
-                // $stmt->bindParam(':id', $id);
-
-                // Excecute the statement
-                // $stmt->execute();
-
-                // Close the db connection
-                // $db = null;
-
-        //         return true;
-        //     } else {
-        //         $db = null;
-        //         return false;
-        //     }
-        // }
-
+        // Takes in a db connection and post id
         public function update($db, $id) {
             // SQL for prepared statement
             $prepared_sql = "UPDATE posts
@@ -87,6 +44,19 @@
             $stmt->bindParam(':id', $id);
 
             // Excecute the statement
+            $stmt->execute();
+        }
+
+        public function delete($db, $id) {
+            // SQL for prepared statement to delete post
+            $prepared_sql = "DELETE FROM posts
+                            WHERE id = :id";
+            $stmt = $db->prepare($prepared_sql);
+
+            // Bind params
+            $stmt->bindParam(':id', $id);
+
+            // Execute the statement
             $stmt->execute();
         }
     }
