@@ -31,7 +31,7 @@
 
         // Checks validity of a JWT
         // Receives an authorization header
-        public static function jwtHandler($authorizationHeader) {
+        public static function authenticate($authorizationHeader) {
             $authorization = $authorizationHeader[0];
             list($jwt) = sscanf($authorization, 'Bearer %s');
             $dummySecret = "imachangethis";

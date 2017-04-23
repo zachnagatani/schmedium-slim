@@ -4,8 +4,9 @@
 
     $app->patch('/api/posts/update/{id}', function(Request $request, Response $response) {
         try {
-            // TODO: Abstract into class somewhere for reuse in other routes
-            $token = Authentication::jwtHandler($request->getHeader('authorization'));
+            // Calls authenticate on Authentication service
+            // Extracts jwt from header
+            $token = Authentication::authenticate($request->getHeader('authorization'));
 
             // Connect to the db
             $db = Db::connect();

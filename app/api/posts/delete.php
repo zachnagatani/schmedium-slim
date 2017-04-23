@@ -4,9 +4,9 @@
 
     $app->delete('/api/posts/delete/{id}', function(Request $request, Response $response) {
         try {
-            // Calls jwtHandler on Authentication service
+            // Calls authenticate on Authentication service
             // Extracts jwt from header
-            $token = Authentication::jwtHandler($request->getHeader('authorization'));
+            $token = Authentication::authenticate($request->getHeader('authorization'));
 
             // Connect to the db
             $db = Db::connect();
