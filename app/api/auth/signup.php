@@ -2,9 +2,6 @@
     use \Psr\Http\Message\ServerRequestInterface as Request;
     use \Psr\Http\Message\ResponseInterface as Response;
 
-    // For access to the Token class to handle generating jwt
-    require_once('token.php');
-
     // Class with helper functions for sign up route
     class Signup {
         public static function checkConflict($username, $email) {
@@ -66,7 +63,7 @@
                 // Register the user
                 Signup::register($username, $email, $UNSAFEpassword);
                 // Return a confirmation message
-                $data = array("jwt" => Token::generate($username));
+                $data = array("jwt" => Authentication::generateJWT($username));
                 return $response->withJson($data);
             } else {
                 // Let the user know something exists already
