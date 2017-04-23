@@ -14,24 +14,15 @@
             // Connect to the db
             $db = Db::connect();
 
-            // Prepare
-            $prepared_sql = "SELECT author
-                             FROM posts
-                             WHERE id = :id";
-            $stmt = $db->prepare($prepared_sql);
-
-            // Bind
-            $stmt->bindParam(":id", $id);
+            // id of post
             $id = $request->getAttribute("id");
 
-            // Execute
-            $stmt->execute();
-
-            $author = $stmt->fetch(PDO::FETCH_OBJ);
+            // Check for matching author
+            $userIsAuthorized = Authorization::checkAuthor($db, $token->data->username, $id);
 
             // If user is authorized, create a new post object and update the post
             // Otherwise respond with error message
-            if ($author->author === $token->data->username) {
+            if ($userIsAuthorized) {
                 $post = new Post(array("content" => $request->getParam('content')));
                 $post->update($db, $id);
 
